@@ -13,7 +13,7 @@ from time import sleep
 url = "https://www.nytimes.com/"
 
 # may need to change Safari with Firefox
-driver = webdriver.Safari()
+driver = webdriver.Firefox()
 driver.get(url)
 
 sleep(2)
@@ -47,7 +47,8 @@ sleep(2)
 article_titles = driver.find_elements(By.XPATH, "//section[@class='story-wrapper']//a//div[@class='css-xdandi']//p")
 all_titles = []
 for title in article_titles:
-    all_titles.append(title.text)
+    if title.text != "":
+        all_titles.append(title.text)
 
 print(all_titles)
 
